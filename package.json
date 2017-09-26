@@ -1,0 +1,22 @@
+{
+  "name": "ci",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "bootstrap": "yarn install && node ./scripts/bootstrap",
+    "lint": "node_modules/.bin/eslint src/ test/ scripts/",
+    "test": "jest --config=test/config.json"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^20.0.4"
+  },
+  "dependencies": {
+    "colors": "^1.1.2",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^20.0.3",
+    "rimraf": "^2.6.1"
+  }
+}

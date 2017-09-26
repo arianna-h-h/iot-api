@@ -1,0 +1,7 @@
+{
+  "rootDir": ".",
+  "coverageDirectory": "<rootDir>/coverage",
+  "testEnvironment": "node",
+  "collectCoverage": true,
+  "coverageReporters": ["text-summary"],
+}
