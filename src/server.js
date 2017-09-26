@@ -1,28 +1,35 @@
+const config = require('../config');
 const restify = require('restify');
 const restifyPlugins = require('restify-plugins');
-
-// TODO generate device ID for new device
-// add device ID and name to MongoDB
-function addNewDevice(name) {
-  return `New device added: ${name}`;
-}
+const mongoose = require('mongoose');
 
 
-const server = restify.createServer();
-server.use(restifyPlugins.jsonBodyParser({ mapParams: true }));
-
-server.post('/devices', (req, res, next) => {
-  const responseBody = addNewDevice(req.body.name);
-  res.send(responseBody);
-  console.log('Successful response: ', responseBody);
-  next();
+const server = restify.createServer({
+  name: config.name,
+  version: config.version,
 });
 
-server.listen(8080, () => {
-  console.log(
-    '%s listening at %s',
-    server.name, server.url,
-  );
+server.use(restifyPlugins.jsonBodyParser({ mapParams: true }));
+server.use(restifyPlugins.acceptParser(server.acceptable));
+server.use(restifyPlugins.queryParser({ mapParams: true }));
+server.use(restifyPlugins.fullResponse());
+
+
+server.listen(config.port, () => {
+  mongoose.Promise = global.Promise;
+  mongoose.connect(config.db.uri, { useMongoClient: true });
+
+  const db = mongoose.connection;
+
+  db.on('error', (err) => {
+    console.error(err);
+    process.exit(1);
+  });
+
+  db.once('open', () => {
+    require('./routes')(server);
+    console.log(`Server is listening on port ${config.port}`);
+  });
 });
 
 module.exports = server;
