@@ -6,3 +6,4 @@
 !.circleci
 !.eslintrc.json
 !.gitignore
+!data.json

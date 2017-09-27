@@ -1,0 +1,13 @@
+{ "device": {
+	"id": "1",
+	"name": "first"
+},
+"readings": {
+	"device_id": "1",
+	"used_memory_percentage": "10%",
+	"cpu_load": "10",
+	"disk_usage_percentage": "20%",
+	"cpu_temperature": "20",
+	"datetime": "26-SEPT-2017"
+}
+}
