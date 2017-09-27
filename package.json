@@ -20,8 +20,11 @@
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jest": "^20.0.3",
-    "hello": "^0.3.2",
+    "mongoose": "^4.11.13",
+    "mongoose-string-query": "^0.2.5",
+    "mongoose-timestamp": "^0.6.0",
     "restify": "^6.0.1",
+    "restify-errors": "^5.0.0",
     "restify-plugins": "^1.6.0",
     "rimraf": "^2.6.1",
     "supertest": "^3.0.0"
