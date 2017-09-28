@@ -27,8 +27,8 @@ function createDevice(data) {
     if (!data.name) throw new Error('Device name not provided.');
     const Model = mongoose.model('Device', DeviceSchema);
     return new Model({ id: data.id, name: data.name });
-  } catch (error) {
-    return error.message;
+  } catch (err) {
+    return { error: { message: err.message } };
   }
 }
 
