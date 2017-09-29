@@ -15,7 +15,12 @@ module.exports = ((server) => {
     }
 
     const data = req.body || {};
-
+    if (!req.body.id) {
+      return next(new errors.InvalidArgumentError('Expects id'));
+    }
+    if (!req.body.name) {
+      return next(new errors.InvalidArgumentError('Expects name'));
+    }
     const device = Device(data);
     if (device.err) {
       console.log('Error:', device.err);

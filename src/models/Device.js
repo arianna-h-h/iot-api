@@ -22,18 +22,8 @@ DeviceSchema.plugin(mongooseStringQuery);
  */
 
 function createDevice(data) {
-  try {
-    if (!data.id) throw new Error('No ID provided.');
-    if (!data.name) throw new Error('Device name not provided.');
-    const Model = mongoose.model('Device', DeviceSchema);
-    return new Model({ id: data.id, name: data.name });
-  } catch (err) {
-    return { error: { message: err.message } };
-  }
-}
-
-async function saveDevice(device) {
-  await device.save().then(() => true, () => false);
+  const Model = mongoose.model('Device', DeviceSchema);
+  return new Model({ id: data.id, name: data.name });
 }
 
 module.exports = createDevice;
