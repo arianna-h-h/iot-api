@@ -32,4 +32,8 @@ function createDevice(data) {
   }
 }
 
+async function saveDevice(device) {
+  await device.save().then(() => true, () => false);
+}
+
 module.exports = createDevice;

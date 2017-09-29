@@ -1,9 +1,8 @@
+const mongoose = require('mongoose');
 const config = require('../config');
+const routes = require('./routes');
 const restify = require('restify');
 const restifyPlugins = require('restify-plugins');
-const mongoose = require('mongoose');
-const routes = require('../routes');
-
 
 const server = restify.createServer({
   name: config.name,
@@ -15,7 +14,6 @@ server.use(restifyPlugins.acceptParser(server.acceptable));
 server.use(restifyPlugins.queryParser({ mapParams: true }));
 server.use(restifyPlugins.fullResponse());
 
-
 server.listen(config.port, () => {
   mongoose.Promise = global.Promise;
   mongoose.connect(config.db.uri, { useMongoClient: true });
@@ -23,7 +21,7 @@ server.listen(config.port, () => {
   const db = mongoose.connection;
 
   db.on('error', (err) => {
-    console.error(err);
+    console.error('DB Error', err);
     process.exit(1);
   });
 

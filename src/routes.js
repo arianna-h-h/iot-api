@@ -1,5 +1,5 @@
 const errors = require('restify-errors');
-const Device = require('../models/Device');
+const Device = require('./models/Device');
 
 module.exports = ((server) => {
   function addNewDevice(name, id) {
@@ -19,17 +19,19 @@ module.exports = ((server) => {
     const device = Device(data);
     if (device.err) {
       console.log('Error:', device.err);
-    } else {
-      device.save((err) => {
-        if (err) {
-          console.error(err);
-          return next(new errors.InternalError(err.message));
-        }
-        const responseBody = addNewDevice(req.body.name, req.body.id);
-        res.send(responseBody);
-        console.log('Successful response: ', responseBody);
-        next();
-      });
+      return next();
     }
+    return device.save((err) => {
+      if (err) {
+        console.error(err);
+        return next(new errors.InternalError(err.message));
+      }
+      const responseBody = addNewDevice(req.body.name, req.body.id);
+      res.send(responseBody);
+      console.log('Successful response: ', responseBody);
+      return next();
+    });
   });
+
+  return server;
 });
