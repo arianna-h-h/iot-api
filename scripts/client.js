@@ -10,4 +10,5 @@ axios({
   data: { name: deviceName, id },
 }).then((response) => {
   console.log('API response:', response.data.message);
+  console.log(response);
 });

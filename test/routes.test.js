@@ -24,8 +24,8 @@ describe('POST /devices', () => {
       request(devices)
         .post('/devices').send({ name: 'Arianna', id: 'test-id' })
         .then((response) => {
-          expect(response.statusCode).toBe(200);
-          expect(response.text).toBe('{"code":200,"message":"New device added: Arianna test-id"}');
+          expect(response.statusCode).toBe(201);
+          expect(response.text).toBe('{"code":"success","message":"New device added: Arianna test-id"}');
         })
     ));
   });
