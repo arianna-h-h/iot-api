@@ -9,5 +9,5 @@ axios({
   url: 'http://localhost:8080/devices',
   data: { name: deviceName, id },
 }).then((response) => {
-  console.log('API response:', response.data);
+  console.log('API response:', response.data.message);
 });

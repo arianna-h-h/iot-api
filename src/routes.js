@@ -32,8 +32,9 @@ module.exports = ((server) => {
         return next(new errors.InternalError(err.message));
       }
       const responseBody = addNewDevice(req.body.name, req.body.id);
-      res.send(responseBody);
-      console.log('Successful response: ', responseBody);
+      const responseJson = { code: 200, message: responseBody };
+      res.send(responseJson);
+      console.log(responseJson.message);
       return next();
     });
   });

@@ -25,8 +25,7 @@ describe('POST /devices', () => {
         .post('/devices').send({ name: 'Arianna', id: 'test-id' })
         .then((response) => {
           expect(response.statusCode).toBe(200);
-          expect(response.text).toBe('"New device added: Arianna test-id"');
-          expect(db.db.collection('devices').s.namespace).toBe('apiTest.devices');
+          expect(response.text).toBe('{"code":200,"message":"New device added: Arianna test-id"}');
         })
     ));
   });

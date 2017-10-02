@@ -6,7 +6,7 @@
     "bootstrap": "yarn install && node ./scripts/bootstrap",
     "lint": "node_modules/.bin/eslint src/ test/ scripts/",
     "test": "jest --config=test/config.json",
-    "start": "node ./src/index.js ./src/server.js",
+    "start": "node ./src/index.js",
     "new": "node ./scripts/client.js"
   },
   "license": "MIT",
