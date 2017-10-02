@@ -6,8 +6,8 @@
     "bootstrap": "yarn install && node ./scripts/bootstrap",
     "lint": "node_modules/.bin/eslint src/ test/ scripts/",
     "test": "jest --config=test/config.json",
-    "start": "node ./src/server.js",
-    "new": "node ./src/client.js"
+    "start": "node ./src/index.js",
+    "new": "node ./scripts/client.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -21,9 +21,14 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jest": "^20.0.3",
     "hello": "^0.3.2",
+    "mongoose": "^4.11.13",
+    "mongoose-string-query": "^0.2.5",
     "restify": "^6.0.1",
+    "restify-errors": "^5.0.0",
     "restify-plugins": "^1.6.0",
     "rimraf": "^2.6.1",
-    "supertest": "^3.0.0"
+    "superagent": "^3.6.1",
+    "supertest": "^3.0.0",
+    "uuidv4": "^0.5.0"
   }
 }
